@@ -1,0 +1,27 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "rust-bundle-app"
+client_id = "d61702a7900676e4b65f1c8420c42d3d"
+application_url = "https://nl-return-saves-ratings.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://nl-return-saves-ratings.trycloudflare.com/auth/callback",
+  "https://nl-return-saves-ratings.trycloudflare.com/auth/shopify/callback",
+  "https://nl-return-saves-ratings.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-07"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "store-extensibility.myshopify.com"

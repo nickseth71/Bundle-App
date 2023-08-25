@@ -1,0 +1,18 @@
+api_version = "2023-07"
+
+[[extensions]]
+name = "Product Config Extention"
+handle = "my-product-config-extension"
+type = "ui_extension"
+
+# Both extension points are required
+[[extensions.targeting]]
+module = "./src/ProductDetailsConfigurationExtension.js"
+# The target used here must match the target used in the module file (./src/ProductDetailsConfigurationExtension.js)
+target = "admin.product-details.configuration.render"
+
+
+[[extensions.targeting]]
+module = "./src/ProductVariantDetailsConfigurationExtension.js"
+# The target used here must match the target used in the module file (./src/ProductVariantDetailsConfigurationExtension.js)
+target = "admin.product-variant-details.configuration.render"
