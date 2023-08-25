@@ -2,7 +2,7 @@
 
 name = "bundle-app"
 client_id = "ba773d8b48b08f3b37f6ab81cd86e1b9"
-application_url = "https://partition-leave-kazakhstan-numbers.trycloudflare.com"
+application_url = "https://kg-trains-rage-still.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products,write_cart_transforms,read_products,read_cart_transform
 
 [auth]
 redirect_urls = [
-  "https://partition-leave-kazakhstan-numbers.trycloudflare.com/auth/callback",
-  "https://partition-leave-kazakhstan-numbers.trycloudflare.com/auth/shopify/callback",
-  "https://partition-leave-kazakhstan-numbers.trycloudflare.com/api/auth/callback"
+  "https://kg-trains-rage-still.trycloudflare.com/auth/callback",
+  "https://kg-trains-rage-still.trycloudflare.com/auth/shopify/callback",
+  "https://kg-trains-rage-still.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
@@ -21,7 +21,3 @@ api_version = "2023-07"
 
 [pos]
 embedded = false
-
-[build]
-automatically_update_urls_on_dev = true
-dev_store_url = "store-extensibility.myshopify.com"
