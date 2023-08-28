@@ -1,0 +1,51 @@
+{% for variant in product.variants %}
+  {% if variant.metafields.custom.component_reference != blank and variant.metafields.custom.component_quantities != blank %}
+    <div class="bundle-widget-wrap app-block">
+      <h3 class="bundle-title">{{ block.settings.title }}</h3>
+      {% assign bundlePrice = 0 %}
+      {% assign priceAdjustment = variant.metafields.custom.price_adjustment.value | plus: 0 %}
+      <div class="bundle-item-grid {{ priceAdjustment }}">
+        {% for cr in variant.metafields.custom.component_reference.value %}
+          {% assign qty = variant.metafields.custom.component_quantities.value[forloop.index0] %}
+          {% assign linePrice = cr.price | times: qty %}
+          {% assign bundlePrice = bundlePrice | plus: linePrice %}
+          <div class="bundle-item">
+            <div class="bi-image">
+              <img
+                src="{{ cr.product.featured_image | img_url: 'original' }}"
+                width="100"
+                height="100"
+                loading="lazy" />
+            </div>
+            <h4 class="title">{{ cr.product.title }}-{{ cr.title }}</h4>
+            <div class="bi-price">{{ cr.price | money }}</div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="bundle-price">
+        {% assign bundleDiscountPrice = priceAdjustment | divided_by: 100 | times: product.price %}
+        <span class="original-price">{{ product.price | minus: bundleDiscountPrice | money }}</span>
+        <span class="compare-price">{{ bundlePrice | money }}</span>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+{% schema %}
+  {
+    "name": "Bundle Widget",
+    "target": "section",
+    "enabled_on": {
+      "templates": ["product"]
+    },
+    "stylesheet": "bundle.css",
+    "javascript": "bundle.js",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Bundle Products"
+      }
+    ]
+  }
+{% endschema %}
